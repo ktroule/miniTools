@@ -68,3 +68,6 @@ if(opt$translation == 'HS'){
 
 # -- Output gmt file
 gmtlist2file(gmt.out,opt$output)
+                                            
+cat('\n')
+print('Done')
