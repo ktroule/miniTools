@@ -3,6 +3,9 @@
 # -- Kevin Troule Feb 2018
 # -- M. Rajoy
 
+# Run script
+# ./translatorGMT.R -i input.gmt -d mouse2hum_biomart_ens87.txt -t HS/MS -o output.gmt
+
 # -- Install and/or load needed packages
 if (!require('qusage')) {
   source("https://bioconductor.org/biocLite.R")
