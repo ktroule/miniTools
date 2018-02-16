@@ -1,3 +1,3 @@
 # miniTools
 
-## translatorGMT.R
+### translatorGMT.R
