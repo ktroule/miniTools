@@ -1,5 +1,5 @@
 # miniTools
 
-#### translatorGMT.R
+### translatorGMT.R
 
 Script to
