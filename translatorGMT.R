@@ -3,18 +3,18 @@
 # -- Kevin Troule Feb 2018
 # -- M. Rajoy
 
-# Run script
-# ./translatorGMT.R -i input.gmt -d mouse2hum_biomart_ens87.txt -t HS/MS -o output.gmt
+# -- Run script
+# -- ./translatorGMT.R -i input.gmt -d mouse2hum_biomart_ens87.txt -t HS/MS -o output.gmt
 
 # -- Install and/or load needed packages
-if (!require('qusage')) {
+if (!require('qusage')){
   source("https://bioconductor.org/biocLite.R")
   biocLite("qusage")
-  }
+}
 if (!require('optparse')) {
   source("https://bioconductor.org/biocLite.R")
   biocLite("optparse")
-  }
+}
 if (!require('cogena')) {
   source("https://bioconductor.org/biocLite.R")
   biocLite("cogena")
@@ -49,7 +49,7 @@ print("This process may take a few minutes ")
 pb <- txtProgressBar(min = 0, max = length(gmt.file), style = 3)
 
 # -- To translate from Mus musculus to Homo sapiens
-if(opt$translation == 'HS'){
+if(opt$translation == 'MM'){
   for(i in 1:length(gmt.file)){
     gmt.out[[i]] <- as.vector(unlist(lapply(gmt.file[[i]], function(x) (ensembl.db$Associated.Gene.Name[(match(x , ensembl.db$Human.associated.gene.name))]))))
     setTxtProgressBar(pb, i)
@@ -58,7 +58,7 @@ if(opt$translation == 'HS'){
 }
 
 # -- To translate from Homo sapiens to Mus musculus  
-if(opt$translation == 'MM'){
+if(opt$translation == 'HS'){
   for(i in 1:length(gmt.file)){
     gmt.out[[i]] <- as.vector(unlist(lapply(gmt.file[[i]], function(x) (ensembl.db$Human.associated.gene.name[(match(x , ensembl.db$Associated.Gene.Name))]))))
     setTxtProgressBar(pb, i)
