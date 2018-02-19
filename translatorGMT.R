@@ -71,3 +71,5 @@ gmtlist2file(gmt.out,opt$output)
                                             
 cat('\n')
 print('Done')
+
+# -- End program
