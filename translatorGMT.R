@@ -24,7 +24,8 @@ if (!require('cogena')) {
 option_list = list(make_option(c("-i","--input", type="character", default=NULL, help="Input gmt file", metavar="character")), 
                    make_option(c("-d","--database", type="character", default=NULL, help="mouse2hum_biomart_ens87 file", metavar="character")), 
                    make_option(c("-o","--output", type="character", default=NULL, help="Output file path", metavar="character")), 
-                   make_option(c("-t","--translation", type="character", default=NULL, help="Translation output; MM (gmt to Mouse), HS (gmt to Human)", metavar="character")))
+                   make_option(c("-t","--translation", type="character", default=NULL, help="Translation output; MM (gmt to Mouse), HS (gmt to Human)", metavar="character")),
+                   make_option(c("-c","--capitalize", type="character", default=0, help="Option to capitalize genes when gmt is translated to MM", metavar="character")))
 
 opt_parser = OptionParser(option_list=option_list)
 opt = parse_args(opt_parser)
@@ -55,6 +56,8 @@ if(opt$translation == 'MM'){
     setTxtProgressBar(pb, i)
   }    
   names(gmt.out) <- names(gmt.file)
+  # -- If to capitalize gmt file
+  if(opt$capitalize == 1){gmt.out <- lapply(gmt.out, function(x) toupper(x))}
 }
 
 # -- To translate from Homo sapiens to Mus musculus  
@@ -66,7 +69,9 @@ if(opt$translation == 'HS'){
   names(gmt.out) <- names(gmt.file)
 }
 
-# -- Output gmt file
+# -- Removes output gmt if already present
+unlink(gmt.out)
+# --  Output gmt file
 gmtlist2file(gmt.out,opt$output)
                                             
 cat('\n')
