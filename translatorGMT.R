@@ -52,7 +52,7 @@ pb <- txtProgressBar(min = 0, max = length(gmt.file), style = 3)
 # -- To translate from Mus musculus to Homo sapiens
 if(opt$translation == 'MM'){
   for(i in 1:length(gmt.file)){
-    gmt.out[[i]] <- as.vector(unlist(lapply(gmt.file[[i]], function(x) (ensembl.db$Associated.Gene.Name[(match(x , ensembl.db$Human.associated.gene.name))]))))
+    gmt.out[[i]] <- unique(as.vector(unlist(lapply(gmt.file[[i]], function(x) (ensembl.db$Associated.Gene.Name[(which(ensembl.db$Human.associated.gene.name == x))])))))
     setTxtProgressBar(pb, i)
   }    
   names(gmt.out) <- names(gmt.file)
@@ -63,7 +63,7 @@ if(opt$translation == 'MM'){
 # -- To translate from Homo sapiens to Mus musculus  
 if(opt$translation == 'HS'){
   for(i in 1:length(gmt.file)){
-    gmt.out[[i]] <- as.vector(unlist(lapply(gmt.file[[i]], function(x) (ensembl.db$Human.associated.gene.name[(match(x , ensembl.db$Associated.Gene.Name))]))))
+    gmt.out[[i]] <- unique(as.vector(unlist(lapply(gmt.file[[i]], function(x) (ensembl.db$Human.associated.gene.name[(which(ensembl.db$Associated.Gene.Name == x))])))))
     setTxtProgressBar(pb, i)
   }    
   names(gmt.out) <- names(gmt.file)
@@ -76,5 +76,4 @@ gmtlist2file(gmt.out,opt$output)
                                             
 cat('\n')
 print('Done')
-
 # -- End program
