@@ -14,4 +14,4 @@ Option **-c**: when translating to mouse, 0 keeps genes as normal, 1 capitalizes
 Whenever one gene from one organism matches multiple genes id from the other, all genes from the last will be added to the new gmt file.  
 E.g. input Mouse gmt contains (Dcaf4), the output Human gmt will contain (DCAF4, DCAF4L2, DCAF4L1)
 
-The mouse2hum_biomart_ens87.tx file was obtained from: http://genomespot.blogspot.com.es/2016/12/msigdb-gene-sets-for-mouse.html
+The **mouse2hum_biomart_ens87.txt** file was obtained from: http://genomespot.blogspot.com.es/2016/12/msigdb-gene-sets-for-mouse.html The file **mouse2hum_biomart_ens87_reduced.txt** contains the same information (gene ids) without taking into account the name of transcripts (as this is a shorter table it will let the script to perform faster).
