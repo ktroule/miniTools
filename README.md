@@ -9,7 +9,7 @@ The first time you run the script, it will try to automatically check and/or ins
 
 **To run the script:** 
 
-```./translatorGMT.R **-i** input.gmt **-d** mouse2hum_biomart_ens87.txt **-t** HS/MS **-o** output.gmt **-c** TRUE/FALSE```
+```./translatorGMT.R -i input.gmt -d mouse2hum_biomart_ens87.txt -t HS/MS -o output.gmt -c TRUE/FALSE```
 
 Option **-t**: HS to translate gmt to from mouse to human. MS to translate gmt from human to mouse  
 Option **-c**: when translating to mouse, 0 keeps genes as normal, 1 capitalizes the gene name (i.e. FALSE:Kras, TRUE:KRAS)
